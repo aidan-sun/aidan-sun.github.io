@@ -3,6 +3,7 @@ html{
   font-family: Georgia, serif;
 }
 
+
 body{
   color: black; 
   margin: 0px;
@@ -118,6 +119,7 @@ games.html
   width: 300px;
   height: 100vh;
   left: 0%;
+  background-color: white;
 }
 
 #infoLeft::before{
@@ -129,7 +131,7 @@ games.html
   right: 0px;
   bottom: 0px;
   left: 0px;
-  z-index: -1;
+  z-index: 1;
   opacity: 6%;
 }
 
@@ -141,6 +143,7 @@ games.html
 }
 
 #mincer div{
+  z-index: 2;
   flex-direction: column;
 }
 
@@ -149,10 +152,20 @@ games.html
 
 }
 
+#mincer h5{
+  margin: 0;
+  padding: 0;
+  font-weight: normal;
+  font-size: 1.125rem;
+  padding-left: 1rem;
+  letter-spacing: 3px;
+  opacity: .5;
+}
+
 #mincer img{
   display: block;
   width: 4em;
-  transform: translateY(12px);
+  transform: translate(1rem, 4px);
 }
 
 .pageTitle a{
@@ -164,6 +177,7 @@ games.html
   bottom: 0;
   margin: 1rem 1.5rem;
   letter-spacing: 2px;
+  z-index: 2;
 }
 
 #infoInfo *{
@@ -191,13 +205,17 @@ games.html
 }
 
 #aboutLink{
-  margin-bottom: 3rem;
+  margin-bottom: 2rem;
+}
+
+#aboutLink a{
+  text-decoration: none;
 }
 
 #socials{
   display: flex;
   flex-flow: wrap;
-  margin-bottom: 2rem;
+  margin-bottom: 3rem;
   align-items: center;
 }
 
@@ -229,6 +247,7 @@ games.html
   left: 50vw;
   transform: translateX(-50%);
   overflow-y: auto;
+  background-color: white;
 }
 
 #mainMain::-webkit-scrollbar-thumb{
@@ -263,6 +282,10 @@ games.html
 /*NAV*/
 
 
+
+nav{
+  z-index: -1;
+}
 
 h3{
   font-weight: normal;
@@ -301,13 +324,13 @@ h3{
   text-align: right;
   cursor: default;
   margin-bottom: 2rem;
+  word-break: break-all;
 }
 
 #mainNav ul{
   margin-top: 2.5rem;
   margin-right: .75rem;
 }
-
 
 
 
@@ -339,7 +362,7 @@ main h2, main h3{
 
 .container{
   margin: 4rem auto;
-  width: 62.5%;
+  width: 66%;
   min-height: 200px;
   box-shadow: 0px 0px 17px 2.25px rgba(0, 0, 0, .045);
 }
@@ -372,6 +395,10 @@ main h2, main h3{
   transform: translateY(-.5rem);
 }
 
+.centerText{
+  text-align: center;
+}
+
 .container img{
   display: block;
   margin: 0 auto;
@@ -382,6 +409,19 @@ main h2, main h3{
 
 .container a{
   text-decoration: underline;
+}
+
+.divided{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.divL{
+  grid-column-start: 1;
+}
+
+.divR{
+  grid-column-start: 2;
 }
 
 .imageContainer{
@@ -404,8 +444,13 @@ main h2, main h3{
   max-width: calc(100% - 2rem);
 }
 
+.circleBorder{
+  border-radius: 50%;
+}
+
 .sectionTitle{
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   box-shadow: 0px 0px 0px rgba(0, 0, 0, 0);
@@ -415,31 +460,40 @@ main h2, main h3{
 .sectionTitle h1{
   padding: 0;
   margin: 0;
+  font-size: 3rem;
+  letter-spacing: 7px;
 }
 
 /*Album Stuff*/
 
-.albumPage{
+.showcaseContainer{
+  height: 55vh;
   display: flex;
-  margin: 4rem auto;
+}
+
+.projShowcase{
+  display: flex;
+  margin: auto;
   justify-content: center;
+  max-height: 600px;
+  width: 100%;
 }
 
 .album{
   background-color: rgba(0, 0, 0, 0);
   width: fit-content;
   height: fit-content;
-  max-width: 36%;
-  max-height: 36%;
+  max-width: 400px;
+  max-height: 400px;
   min-width: 200px;
-  margin: 1rem;
+  margin: auto 1rem;
 }
 
 .album img{
   padding: 0;
-  max-width: 100%;
-  max-height: 100%;
-  box-shadow: 0px 0px 17px 1px rgba(0, 0, 0, .06);
+  max-width: 400px;
+  max-height: 400px;
+  box-shadow: 0px 0px 17px rgba(0, 0, 0, .06);
 }
 
 .albumInfo{
@@ -455,7 +509,9 @@ main h2, main h3{
 }
 
 .albumInfo h3{
-  margin-top: 2rem;
+/*  margin-top: 2rem;*/
+  font-size: 1.75rem;
+  margin-bottom: 1.25rem;
 }
 
 .albumInfo h4{
@@ -464,7 +520,7 @@ main h2, main h3{
 }
 
 .albumInfo ul{
-  margin: 1rem 0 2rem 0;
+  margin: 1rem 0;
   letter-spacing: 2px;
   font-size: .88rem;
   padding-left: 1rem;
@@ -478,6 +534,18 @@ main h2, main h3{
   font-size: .66rem;
   color: rgba(0, 0, 0, .75);
   letter-spacing: 1px;
+}
+
+.reveal{
+  transform: translateY(100px);
+  opacity: 0;
+  transition: all .75s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.reveal.active{
+  transform: translateY(0px);
+  opacity: 1;
+
 }
 
 

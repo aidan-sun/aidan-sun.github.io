@@ -64,3 +64,32 @@ HTMLImporter.import = function (url) {
   http_request.open("GET", url);
   http_request.send();
 };
+
+// reveal
+window.onload=function(){
+
+const main = document.getElementById("mainMain");
+
+main.addEventListener('scroll', reveal);
+
+function reveal(){
+  var reveals = document.querySelectorAll('.reveal');
+
+  for (var i = 0; i < reveals.length; i++) {
+    
+    var windowheight = window.innerHeight;
+    var revealtop = reveals[i].getBoundingClientRect().top;
+    var revealpoint = 300;
+
+    if(revealtop < windowheight - revealpoint){
+      reveals[i].classList.add('active');
+    }
+
+
+    else{
+      reveals[i].classList.remove('active');
+    }    
+
+  }
+}
+}
