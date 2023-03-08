@@ -1,8 +1,3 @@
-// s
-
-
-
-
 // HTML IMPORTER
 
 
@@ -55,7 +50,7 @@ HTMLImporter.import = function (url) {
     this.removeEventListener("error", error);
     this.removeEventListener("load", load);
 
-    alert("there was an error!");
+    alert("An error has occured!");
   };
 
   http_request = new XMLHttpRequest();
@@ -65,31 +60,117 @@ HTMLImporter.import = function (url) {
   http_request.send();
 };
 
+
+
+
+
+
+
+
 // reveal
+
 window.onload=function(){
 
-const main = document.getElementById("mainMain");
+// const main = document.getElementById("mainMain");
 
-main.addEventListener('scroll', reveal);
+// main.addEventListener('scroll', reveal);
 
-function reveal(){
-  var reveals = document.querySelectorAll('.reveal');
+// function reveal(){
+//   var reveals = document.querySelectorAll('.reveal');
 
-  for (var i = 0; i < reveals.length; i++) {
+//   for (var i = 0; i < reveals.length; i++) {
     
-    var windowheight = window.innerHeight;
-    var revealtop = reveals[i].getBoundingClientRect().top;
-    var revealpoint = 300;
+//     var windowheight = window.innerHeight;
+//     var revealtop = reveals[i].getBoundingClientRect().top;
+//     var revealpoint = 212;
 
-    if(revealtop < windowheight - revealpoint){
-      reveals[i].classList.add('active');
+//     if(revealtop < windowheight - revealpoint){
+//       reveals[i].classList.add('appear');
+//     }
+
+
+//     else{
+//       reveals[i].classList.remove('appear');
+//     }    
+
+//   }
+// }
+
+
+
+
+
+// const observer = new IntersectionObserver((entries) =>{
+//   entries.forEach((entry) => {
+//     if (entry.isIntersecting) {
+//       entry.target.classList.add('appear');
+//     }
+//     else{
+//       entry.target.classList.remove('appear');
+//     }
+//   });
+// });
+
+// const reveal = document.querySelectorAll('.reveal');
+
+// reveal.forEach((el) => observer.observe(el));
+
+
+
+
+
+const faders = document.querySelectorAll('.reveal');
+const appearOptions = {
+  threshold: .25,
+  rootMargin: "0px 0px -75px 0px"
+};
+
+const appearOnScroll = new IntersectionObserver(function(entries, appearOnScroll) {
+  entries.forEach(entry =>{
+    if (!entry.isIntersecting) {
+      if (entry.boundingClientRect.top > 0) {
+        entry.target.classList.remove('appear');
+      } 
+      else {
+        return;
+      }
     }
 
-
     else{
-      reveals[i].classList.remove('active');
-    }    
+      entry.target.classList.add('appear');
+      
+    }
+  })
+}, 
+appearOptions);
 
-  }
-}
-}
+faders.forEach(fader => {
+  appearOnScroll.observe(fader);
+});
+
+
+
+
+};
+
+// detect current page for opacity
+// detect body class (navChange) for movement
+
+
+// function uegroupOn() {
+//    var uegroupNav = document.getElementById('uegroupNav');
+
+//    if(foo.style.display == '' || foo.style.display == 'none'){
+//         foo.style.display = 'block';
+//    }
+//    else {
+//         foo.style.display = 'none';
+//    }
+// }
+
+
+// document.getElementByID("uegroupNav").style.display = "block";
+
+
+
+

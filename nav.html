@@ -1,7 +1,47 @@
-<nav id="mainNav">
-      <div id="navMargin">
-        <div id="navTitle">
-         <h1 class="pageTitle"><a href="directory.html" class="linkHover">DIRECTORY</a></h1>
+<nav>
+
+  
+<div id="navMobile">
+  <div id="navMobTitle">
+    <div id="navMobTitleText">
+      <h1 class="pageTitle"><a href="index.html">AIDAN SUN</a></h1>
+      <h3 id="navMobileh3">UX DESIGNER</h3>
+    </div>
+    <div id="navMobButton">
+      <img id="navMobClosed" class="visibleNavMob" src="images/menumobile.png">
+      <img id="navMobOpened" src="images/closemobile.png">
+    </div>
+  </div>
+
+  <div id="navMobContent">
+    <h3 class="noUL"><a href="directory.html">DIRECTORY</a></h3><h3>|</h3>
+    <h3 class="noUL"><a href="about.html">ABOUT</a></h3><h3>|</h3>
+    <h3 class="noUL">CONTACT</h3>
+  </div>
+</div>
+
+
+
+  <div class="backForth" id="navGoLeft">
+    <h3 class="linkHover noUL clickFake">◄</h3>   
+  </div>
+
+  <div class="backForth" id="navGoRight">
+    <h3 class="linkHover noUL clickFake" >►</h3>
+  </div>
+
+  <div class="backForth" id="navGoLR">
+    <h3 class="linkHover noUL clickFake" id="navGoLeft3">◄</h3>   
+    <h3 class="linkHover noUL clickFake" id="navGoRight3">►</h3>
+  </div>
+  
+
+  <div id="navMove">
+
+  <div id="mainNav" class="navNav">
+      <div class="navMargin">
+        <div class="navTitle">
+         <h1 class="pageTitle" id="navTitleText"><a href="directory.html" class="linkHover">DIRECTORY</a></h1>
         </div>
 
         <ul>  
@@ -16,4 +56,131 @@
         </ul> 
 
       </div>
-    </nav>
+    </div>
+
+
+    <div id="uegroupNav" class="navNav otNav">
+      <div class="navMargin">
+        <div class="navTitle">
+         <h1 class="pageTitle" id="navTitleText"><a href="uegroup.html" class="linkHover">UEGROUP/XCENTER</a></h1>
+        </div>
+
+        <ul>  
+         <h3><a href="" class="linkHover">OVERVIEW</a></h3>
+         <h3><a href="" class="linkHover">DELIVERABLES</a></h3>
+         <h3><a href="" class="linkHover">RESEARCH</a></h3>
+         <h3><a href="" class="linkHover">TIMELINE</a></h3>
+         <h3><a href="" class="linkHover">CO-DESIGN</a></h3>
+         <h3><a href="" class="linkHover">CONCLUSION</a></h3>
+         <h3><a href="" class="linkHover">CONTRIBUTIONS</a></h3>
+         
+         <!-- <div class="mainPadding"></div>
+         <div class="padding1"></div>
+         
+         <h3><a href="directory.html" class="linkHover">DIRECTORY</a></h3> -->
+        </ul> 
+
+      </div>
+    </div>
+
+    <div id="otherNav" class="navNav otNav">
+      <div class="navMargin">
+        <div class="navTitle">
+         <h1 class="pageTitle" id="navTitleText"><a href="uegroup.html" class="linkHover">UEGROUP/afea</a></h1>
+        </div>
+
+        <ul>  
+         <h3><a href="" class="linkHover">a</a></h3>
+         <h3><a href="" class="linkHover">DELIVERABLES</a></h3>
+         <h3><a href="" class="linkHover">RsESEARCH</a></h3>
+         <h3><a href="" class="linkHover">TIMafaELINE</a></h3>
+         <h3><a href="" class="linkHover">CO-DESIGN</a></h3>
+         <h3><a href="" class="linkHover">CONCLaefaeUSION</a></h3>
+         <h3><a href="" class="linkHover">CONTRIBUTIONS</a></h3>
+         <div class="mainPadding"></div>
+         <div class="padding1"></div>
+         <h3><a href="directory.html" class="linkHover">DIRECTORY</a></h3>
+         
+        </ul> 
+
+      </div>
+    </div>
+
+</div>
+
+
+
+
+
+
+<script type="text/javascript">
+
+(function() {
+  const mainNav = document.getElementById('mainNav');
+  const otNav = document.querySelector('.otNav')
+  const navGoLeft = document.getElementById('navGoLeft');
+  const navGoRight = document.getElementById('navGoRight');
+  const navMove = document.getElementById('navMove');
+
+
+  if(document.body.className.match('navChange')) {
+    // mainNav.style.transform = "translateX(-100%)";
+    // otNav.style.transform = "translateX(0%)";
+    // navMove.style.transform = "translateX(-100%)";
+    navMove.classList.add('navMove1');
+
+    if(navMove.classList.contains('navMove1')){
+      navGoLeft.classList.add('showNavOp');
+    } if(!navMove.classList.contains('navMove1')){
+      navGoRight.classList.add('showNavOp');
+    }
+
+  navGoLeft.addEventListener('click', () => {
+    navMove.classList.remove('navMove1');
+    navGoLeft.classList.remove('showNavOp');
+    navGoRight.classList.add('showNavOp');
+  });
+
+  navGoRight.addEventListener('click', () => {
+    navMove.classList.add('navMove1');
+    navGoRight.classList.remove('showNavOp');
+    navGoLeft.classList.add('showNavOp');
+  });
+
+  };
+
+//for every new page, add consts
+  const uegroupNav = document.getElementById('uegroupNav');
+
+  if(document.URL.includes("uegroup")) {
+    uegroupNav.style.display = 'block';
+  };
+
+
+}());
+
+//mobile
+(function() {
+const navMobClosed = document.getElementById('navMobClosed');
+const navMobOpened = document.getElementById('navMobOpened');
+const navMobContent = document.getElementById('navMobContent');
+
+navMobClosed.addEventListener('click', () => {
+  navMobClosed.classList.remove('visibleNavMob');
+  navMobOpened.classList.add('visibleNavMob');
+  navMobContent.classList.add('navMobMove');
+});
+
+navMobOpened.addEventListener('click', () => {
+  navMobClosed.classList.add('visibleNavMob');
+  navMobOpened.classList.remove('visibleNavMob');
+  navMobContent.classList.remove('navMobMove');
+});
+
+}());
+
+//When you get to multiple nav pages, use a different body class (eg. navChange2 or something) and set up an if function for that
+
+</script>
+
+</nav>
