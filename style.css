@@ -2,8 +2,9 @@ html{
   font-size: 14px;
   font-family: Georgia, serif;
   overflow: hidden;
+  letter-spacing: 1px;
+  scroll-behavior: smooth;
 }
-
 
 body{
   color: black; 
@@ -32,17 +33,23 @@ a:hover{
 
 .linkHover:hover{
   filter: invert(100%);
-  text-shadow: 0px 0px 2px white, 0px 0px 2px white, 0px 0px 2px white, 0px 0px 2px white, 0px 0px 2px white;
+  text-shadow: 0px 0px 5px white, 0px 0px 5px white, 0px 0px 5px white, 0px 0px 4px white, 0px 0px 4px white;
 }
 
 .clickFake:hover{
   cursor: pointer;
 }
 
+.noUL{
+  text-decoration: none!important;
+  display: inline-block;
+}
+
+
 h1{
-  font-size: 2.5rem;
+  font-size: 35px;
   font-weight: normal;
-  letter-spacing: 5px;
+  letter-spacing: 6px;
   margin: 0;
 }
 
@@ -51,63 +58,16 @@ ul{
   padding: 0;
 }
 
+p{
+  font-size: 1.13rem;
+}
+
 /*
 NOTES: 
-
-media query at 1500
-
-use iframes?????!?!?!
-
-https://stackoverflow.com/questions/71636631/replace-html-code-with-code-from-another-page
-https://stackoverflow.com/questions/17502071/transfer-data-from-one-html-file-to-another
-https://www.geeksforgeeks.org/how-to-append-html-code-to-a-div-using-javascript/
-
-https://stackoverflow.com/questions/11696921/linking-identical-html-over-several-pages
-
-
-!! https://stackoverflow.com/questions/31954089/how-can-i-reuse-a-navigation-bar-on-multiple-pages !! <-- this seems good!!
-
-AJAX
-https://www.w3schools.com/js/js_ajax_intro.asp
-PHP too?
 
 
 animations
 the box when u hover over nav stuff
-
-
-
-PAGES
-about.html
--?aboutThisSite.html
-
-changelog.html
-
-journal.html
--dreamJournal.html
--myGospel
-
-music.html
--myMusic.html
--reviewsMusic.html
--favoriteMusic.html
-/top100Music.html
-/topArtistsMusic.html
-/shrinesMusic.html
-=__ShrineMusic.html
--rankingsMusic.html
-/__RankingMusic.html
--collectionMusic.html
--kingCrimsonGuide.html
--drainGangGuide.html
--contactMeMusic.html
-
-games.html
--geometryDash.html
-/myLevels.html
-/reviewsGD.html
--tBOI.html
-
 
 
 */
@@ -142,9 +102,10 @@ games.html
 
 #mincer{
   display: flex;
-  margin: 1.5rem 1.5rem;
+  margin: 2rem 1.5rem;
   cursor: default;
   justify-content: left;
+  height: 7rem;
 }
 
 #mincer div{
@@ -179,10 +140,12 @@ games.html
 
 #infoInfo{
   position: absolute;
-  bottom: 0;
+  bottom: 1rem;
   margin: 1rem 1.5rem;
+  margin-right: .5rem;
   letter-spacing: 2px;
   z-index: 2;
+  word-break: break-word;
 }
 
 #infoInfo *{
@@ -191,11 +154,12 @@ games.html
 }
 
 #infoInfo h2{
-  font-size: 1.5rem;
+  font-size: 2.12rem;
 }
 
 #infoInfo p{
-  font-size: .88rem;
+  font-size: 1.12rem;
+
 }
 
 #infoInfo #contactHeading{
@@ -205,12 +169,12 @@ games.html
 
 #infoInfo .c{
   margin-top: .5rem;
-  font-size: .6rem;
+  font-size: .66rem;
   font-weight: bold;
 }
 
 #aboutLink{
-  margin-bottom: 2.5rem;
+  margin-bottom: 4rem;
 }
 
 #aboutLink a{
@@ -220,7 +184,7 @@ games.html
 #socials{
   display: flex;
   flex-flow: wrap;
-  margin-bottom: 2.5rem;
+  margin-bottom: 3.5rem;
   align-items: center;
   line-height: 1.5rem;
 }
@@ -263,7 +227,7 @@ games.html
   background: rgba(0, 0, 0, .06);
 }
 
-/*SCROLLBARS (UNIVERSAL)*/
+/*SCROLLBARS*/
 
 ::-webkit-scrollbar{
   width: 8px;
@@ -283,7 +247,10 @@ games.html
 }
 
 
-
+*{
+  scrollbar-width: thin;
+  scrollbar-color: rgba(210, 210, 210, .2) rgba(0, 0, 0, 0);
+}
 
 /*NAV*/
 
@@ -345,11 +312,30 @@ h3{
 #mainNav{
   transform: translateX(0%);
 }
-
 .otNav{
   display: none;
+}
+
+.otNavVisible{
+  display: block;
+}
+
+.otNav2{
   transform: translateX(100%);
 }
+.otNav3{
+  transform: translate(200%, .5rem);
+}
+.otNav4{
+  transform: translate(300%, .5rem);
+}
+.otNav5{
+  transform: translate(400%, .5rem);
+}
+.otNav6{
+  transform: translate(500%, .5rem);
+}
+
 
 
 /*#uegroupNav{
@@ -371,7 +357,7 @@ h3{
   }*/
 
 .navMargin{
-  margin: 1.5rem 1.5rem;
+  margin: 2rem 1.5rem;
 }
 
 .navTitle{
@@ -386,34 +372,83 @@ h3{
   margin-right: .75rem;
 }
 
-.backForth{
+
+#pageSelect{
+  position: absolute;
+  right: 0%;
+  width: 300px;
+  box-sizing: border-box;
+  padding: 0 2rem;
+  display: flex;
+  justify-content: center;
+  transform: translateY(.125rem);
+}
+
+#pageSelect h3{
+  font-size: 1.5rem;
+  margin: 0 .33rem;
+}
+
+.pageSelectButton.pageSelectAct{
+  display: block;
+}
+
+.pageSelectButton{
+  display: none;
+  opacity: 20%;
+}
+
+.pageSelectButton.pageButAct{
+  opacity: 88%;
+}
+
+#navMove.navPage1{
+  transform: translateX(0%);
+}
+#navMove.navPage2{
+  transform: translateX(-100%);
+}
+#navMove.navPage3{
+  transform: translateX(-200%);
+}
+#navMove.navPage4{
+  transform: translateX(-300%);
+}
+#navMove.navPage5{
+  transform: translateX(-400%);
+}
+#navMove.navPage6{
+  transform: translateX(-500%);
+}
+
+/*.navDirMove{
+  transform: translateY(.75rem);
+}*/
+
+
+
+
+/*.backForth{
   position: absolute;
   right: 0;
-  top: 91%;
+  top: 92%;
   text-align: right;
   font-weight: bold;
   margin-right: 1.75rem;
-  opacity: .88;
+  opacity: 88%;
 }
 
 .backForth h3{
   font-size: 2.75rem;
   display: none;
-
-}
-
-/*#navGoLeft, #navGoRight, #navGoLeft3, #navGoRight3{
-  
-}*/
-
-#navMove.navMove1{
-  transform: translateX(-100%);
 }
 
 .showNavOp h3{
   display: block;
-}
+}*/
 
+
+/*Mobile Nav*/
 
 #navMobile{
   position: fixed;
@@ -484,6 +519,7 @@ h3{
   width: 100%;
   height: 100%;
   background: rgba(255, 255, 255, .66);
+  -webkit-backdrop-filter: blur(.12rem);
   backdrop-filter: blur(.12rem);
   z-index: 5;
   box-shadow: 0px 0px 17px 2.25px rgba(0, 0, 0, .05);
@@ -499,18 +535,20 @@ h3{
 
 
 
+
+
 /*SECTIONS*/
 
 
 
 
 main h1{
-  font-size: 2.25rem;
+  font-size: 2.75rem;
   font-weight: bold;
 }
 
 main h2, main h3{
-  font-size: 1.5rem;
+  font-size: 1.6rem;
 }
 
 .mainPadding{
@@ -525,27 +563,29 @@ main h2, main h3{
 
 .container{
   margin: 4rem auto;
-  width: 66%;
+  width: 62.5%;
   min-height: 200px;
-  box-shadow: 0px 0px 17px 2.25px rgba(0, 0, 0, .055);
+  box-shadow: 0px 0px 17px 2.25px rgba(0, 0, 0, 5%);
 }
 
 .container h1, .container h2{
-  margin: 0 4rem;
+  margin: 0 3rem;
   text-align: center;
 }
 
 .container h1{
   padding: 2rem 0 1rem 0;
+  letter-spacing: 8px;
 }
 
 .container h2{
   padding: 0 0 2rem 0;
-  font-size: 1.25rem;
+  font-size: 1.5rem;
+  letter-spacing: 0px;
 }
 
 .container p, .container h3{
-  margin: 0 4rem;
+  margin: 0 3rem;
   padding: 1rem 0;
 }
 
@@ -553,9 +593,10 @@ main h2, main h3{
   font-weight: normal;
   color: rgba(0, 0, 0, .66);
   text-align: center;
-  margin: 0 5rem;
+  margin: 0 3rem;
   padding: 0 0 .5rem 0;
-  font-size: .75rem;
+  font-size: 1rem;
+  letter-spacing: 0px;
   transform: translateY(-.5rem);
 }
 
@@ -577,11 +618,6 @@ main h2, main h3{
 
 .container a{
   text-decoration: underline;
-}
-
-.noUL{
-  text-decoration: none!important;
-  display: inline-block;
 }
 
 .divided{
@@ -634,7 +670,7 @@ main h2, main h3{
   padding: 0;
   margin: 0;
   font-size: 3rem;
-  letter-spacing: 7px;
+  letter-spacing: 10px;
 }
 
 /*Showcase*/
@@ -688,8 +724,9 @@ main h2, main h3{
 }
 
 .showcaseInfo h4{
-  padding-left: .75rem;
-  font-size: .88rem;
+  padding-left: .88rem;
+  margin-top: 0;
+  font-size: 1.125rem;
 }
 
 .showcaseInfo ul{
@@ -710,7 +747,7 @@ main h2, main h3{
 }
 
 .flavorText{
-  font-size: .66rem;
+  font-size: .75rem;
   color: rgba(0, 0, 0, .75);
   letter-spacing: 1px;
 }
@@ -860,15 +897,14 @@ html{
 
 h1{
   font-size: 2.25rem;
+  letter-spacing: 5px;
 }
 
-#navTitleText{
+.navTitleText{
   font-size: 1.34rem;
   font-weight: bold;
   padding-top: .75rem;
 }
-
-
 
 #mincer, #infoInfo{
   margin-left: .75rem;
@@ -883,7 +919,7 @@ h1{
   margin-right: .75rem;
 }
 
-#infoLeft, #navMove, .navMove, .navNav{
+#infoLeft, #navMove, .navMove, .navNav, #pageSelect{
   width: 200px;
 }
 
@@ -894,6 +930,10 @@ h1{
 .showcaseContainer{
   height: 55vh;
 }
+
+/*.backForth{
+  transform: translateX(-100px) translateX(50%);
+}*/
 
 }
 
@@ -920,6 +960,18 @@ h1{
   width: 100vw;
 }
 
+.container{
+  width: 80%;
+}
+
+.imageContainer{
+  max-width: 80%;
+}
+
+.showcaseThumb{
+  max-width: 350px;
+}
+
 .showcaseContainer{
   height: 40vh;
   margin-top: 12rem;
@@ -937,7 +989,6 @@ h1{
 
 .container{
   width: 90%;
-  margin: ;
 }
 
 .showcaseThumb{
@@ -976,6 +1027,14 @@ h1{
 
 .pageNav{
   gap: 2rem;
+}
+
+}
+
+@media (max-height: 800px){
+
+.showcaseContainer{
+  margin-bottom: 75%;
 }
 
 }
