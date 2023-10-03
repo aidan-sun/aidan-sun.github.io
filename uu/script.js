@@ -71,52 +71,6 @@ HTMLImporter.import = function (url) {
 
 window.onload=function(){
 
-// const main = document.getElementById("mainMain");
-
-// main.addEventListener('scroll', reveal);
-
-// function reveal(){
-//   var reveals = document.querySelectorAll('.reveal');
-
-//   for (var i = 0; i < reveals.length; i++) {
-    
-//     var windowheight = window.innerHeight;
-//     var revealtop = reveals[i].getBoundingClientRect().top;
-//     var revealpoint = 212;
-
-//     if(revealtop < windowheight - revealpoint){
-//       reveals[i].classList.add('appear');
-//     }
-
-
-//     else{
-//       reveals[i].classList.remove('appear');
-//     }    
-
-//   }
-// }
-
-
-
-
-
-// const observer = new IntersectionObserver((entries) =>{
-//   entries.forEach((entry) => {
-//     if (entry.isIntersecting) {
-//       entry.target.classList.add('appear');
-//     }
-//     else{
-//       entry.target.classList.remove('appear');
-//     }
-//   });
-// });
-
-// const reveal = document.querySelectorAll('.reveal');
-
-// reveal.forEach((el) => observer.observe(el));
-
-
-
 
 
 const faders = document.querySelectorAll('.reveal');
@@ -151,48 +105,147 @@ faders.forEach(fader => {
 
 
 
+
+
+window.addEventListener( "pageshow", function ( event ) {
+  var historyTraversal = event.persisted || 
+                         ( typeof window.performance != "undefined" && 
+                              window.performance.navigation.type === 2 );
+  if ( historyTraversal ) {
+    // Handle page restore.
+    window.location.reload();
+  }
+});
+
 };
 
-// detect current page for opacity
-// detect body class (navChange) for movement
 
 
-// function uegroupOn() {
-//    var uegroupNav = document.getElementById('uegroupNav');
-
-//    if(foo.style.display == '' || foo.style.display == 'none'){
-//         foo.style.display = 'block';
-//    }
-//    else {
-//         foo.style.display = 'none';
-//    }
-// }
 
 
-// document.getElementByID("uegroupNav").style.display = "block";
+
+function pageTransition(){
+
+
+const tran = document.querySelectorAll('.tran');
+const anchors = document.querySelectorAll('a');
+
+  setTimeout(() => {
+    tran.forEach(elem =>{
+      elem.classList.remove('pageTran');
+    });
+  }, 250);
+
+  
+
+  // V this works too 
+  // addEventListener('click', function (event) {
+  //   event.preventDefault();
+  //   const anchor = event.target.closest("a");
+  //   if (!anchor) return;
+  //   console.log( anchor.getAttribute('href'));
+
+
+  //   tran.forEach(elem =>{
+  //     elem.classList.add('pageTran');
+  //   });
+
+  //   setTimeout(() => {
+  //     window.location.href = anchor.href;
+  //   }, 330);
+
+  // });
+
+
+
+
+  for (let i = 0; i < anchors.length; i++){
+    const anchor = anchors[i];
+
+    anchor.addEventListener('click', e =>{
+      e.preventDefault();
+      let target = e.currentTarget.href;
+
+      console.log(target);
+
+      tran.forEach(elem =>{
+      elem.classList.add('pageTran');
+      });
+
+      setTimeout(() => {
+        window.location.href = target;
+      }, 0);
+
+    });
+  };
+
+
+};
+
+
 
 
 
 
 function navScript() {
 
-  const mainNav = document.getElementById('mainNav');
-  const otNav2 = document.querySelector('.otNav2')
-  const navGoLeft = document.getElementById('navGoLeft');
-  const navGoRight = document.getElementById('navGoRight');
+// Keeps the nav opened or closed on refresh or new page
+
+  const navOpen = document.getElementById('navOpen');
+  const navEl = document.getElementById('navEl');
+  const perHead = document.getElementById('persHead');
+  const mainMod = document.querySelector('main');
+  const close = 'close';
+  const open = 'open';
+  const DEFAULT_MODE = close;
+
+
+    let storedMode = sessionStorage.getItem('navMoving');
+    if (!storedMode) {
+        storedMode = DEFAULT_MODE;
+        sessionStorage.setItem('navMoving', DEFAULT_MODE);
+    }
+    setNav(storedMode);
+
+
+function setNav(navMoving = DEFAULT_MODE) {
+  if (navMoving === open) {
+    navEl.classList.add('navOpened');
+    navOpen.classList.add('navOpenMove');
+    mainMod.classList.add('mainSlide');
+    persHead.classList.add('headSlide');
+
+  } else if (navMoving === close){
+    navEl.classList.remove('navOpened');
+    navOpen.classList.remove('navOpenMove');
+    mainMod.classList.remove('mainSlide');
+    persHead.classList.remove('headSlide');
+  };
+};
+
+navOpen.addEventListener('click', function () {
+    let navMoving = sessionStorage.getItem('navMoving');
+    if (navMoving) {
+        let newMode = navMoving == open ? close : open;
+        setNav(newMode);
+        sessionStorage.setItem('navMoving', newMode);
+    }
+});
+
+
+
+// page selection button stuff
+
   const navMove = document.getElementById('navMove');
-  const navTitle1Line = document.querySelector('.navTitle1Line');
-
   const pageSelect = document.getElementById('pageSelect');
-
-
-
     const page1 = document.getElementById('page1');
     const page2 = document.getElementById('page2');
     const page3 = document.getElementById('page3');
     const page4 = document.getElementById('page4');
     const page5 = document.getElementById('page5');
     const page6 = document.getElementById('page6');
+    const page7 = document.getElementById('page7');
+    const page8 = document.getElementById('page8');
 
   function pageButtonRemove()   {
     page1.classList.remove('pageSelectAct');
@@ -201,6 +254,8 @@ function navScript() {
     page4.classList.remove('pageSelectAct');
     page5.classList.remove('pageSelectAct');
     page6.classList.remove('pageSelectAct');
+    page7.classList.remove('pageSelectAct');
+    page8.classList.remove('pageSelectAct');
   };
 
 
@@ -255,18 +310,39 @@ function navScript() {
     page5.classList.add('pageSelectAct');
     page6.classList.add('pageSelectAct');
   };
+  if(document.body.className.match('navChange7')) {
+    navMove.classList.add('navPage7');
+
+    pageButtonRemove();
+
+    page1.classList.add('pageSelectAct');
+    page2.classList.add('pageSelectAct');
+    page3.classList.add('pageSelectAct');
+    page4.classList.add('pageSelectAct');
+    page5.classList.add('pageSelectAct');
+    page6.classList.add('pageSelectAct');
+    page7.classList.add('pageSelectAct');
+  };
+  if(document.body.className.match('navChange8')) {
+    navMove.classList.add('navPage8');
+
+    pageButtonRemove();
+
+    page1.classList.add('pageSelectAct');
+    page2.classList.add('pageSelectAct');
+    page3.classList.add('pageSelectAct');
+    page4.classList.add('pageSelectAct');
+    page5.classList.add('pageSelectAct');
+    page6.classList.add('pageSelectAct');
+    page7.classList.add('pageSelectAct');
+    page8.classList.add('pageSelectAct');
+  };
 
 
 
-
-
+//actual tingys
 
   if(document.body.className.match('navChange')) {
-    // mainNav.style.transform = "translateX(-100%)";
-    // otNav2.style.transform = "translateX(0%)";
-    // navMove.style.transform = "translateX(-100%)";
-    
-    navTitle1Line.classList.add('navDirMove');
 
     const pageSelectButton = document.querySelector('.pageSelectButton');
     
@@ -306,6 +382,16 @@ function navScript() {
    } else{
     page6.classList.remove('pageButAct');
    };
+   if(navMove.classList.contains('navPage7')){
+     page7.classList.add('pageButAct');
+   } else{
+    page7.classList.remove('pageButAct');
+   };
+   if(navMove.classList.contains('navPage8')){
+     page8.classList.add('pageButAct');
+   } else{
+    page8.classList.remove('pageButAct');
+   };
 
  };
 
@@ -318,6 +404,8 @@ function navScript() {
     navMove.classList.remove('navPage4');
     navMove.classList.remove('navPage5');
     navMove.classList.remove('navPage6');
+    navMove.classList.remove('navPage7');
+    navMove.classList.remove('navPage8');
   }
 
 
@@ -376,23 +464,23 @@ function navScript() {
     pageButtonActivation();
    });
 
-  //   if(navMove.classList.contains('navMove1')){
-  //     navGoLeft.classList.add('showNavOp');
-  //   } if(!navMove.classList.contains('navMove1')){
-  //     navGoRight.classList.add('showNavOp');
-  //   }
+  page7.addEventListener('click', () =>{
+    pageSelectButton.classList.remove('pageButAct');
+    pageAssignRemove();
 
-  // navGoLeft.addEventListener('click', () => {
-  //   navMove.classList.remove('navMove1');
-  //   navGoLeft.classList.remove('showNavOp');
-  //   navGoRight.classList.add('showNavOp');
-  // });
+    navMove.classList.add('navPage7');
+    
+    pageButtonActivation();
+   });
 
-  // navGoRight.addEventListener('click', () => {
-  //   navMove.classList.add('navMove1');
-  //   navGoRight.classList.remove('showNavOp');
-  //   navGoLeft.classList.add('showNavOp');
-  // });
+  page8.addEventListener('click', () =>{
+    pageSelectButton.classList.remove('pageButAct');
+    pageAssignRemove();
+
+    navMove.classList.add('navPage8');
+    
+    pageButtonActivation();
+   });
 
   };
 
@@ -400,14 +488,20 @@ function navScript() {
 
 
 //for every new page, add consts
-  const uegroupNav = document.getElementById('uegroupNav');
-  const personalworkNav = document.getElementById('personalworkNav');
+  const musicNav = document.getElementById('musicNav');
+  const myMusicNav = document.getElementById('myMusicNav');
+  const exampleNav = document.getElementById('exampleNav');
+  const indexNav = document.getElementById('indexNav');
+  const expediaNav = document.getElementById('expediaNav');
 
-  if(document.URL.includes("uegroup")) {
-    uegroupNav.classList.add('otNavVisible');
+  if(document.URL.includes("examplelol")) {
+    exampleNav.classList.add('otNavVisible');
+  }
+  if(document.body.classList.contains("navIndex")) {
+    indexNav.classList.add('otNavVisible');
   };
-  if(document.URL.includes("personalwork")) {
-    personalworkNav.classList.add('otNavVisible');
+  if(document.body.classList.contains('navExpedia')) {
+    expediaNav.classList.add('otNavVisible');
   };
 
 };
@@ -439,3 +533,6 @@ navMobOpened.addEventListener('click', () => {
 });
 
 };
+
+
+  
