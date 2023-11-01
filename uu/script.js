@@ -1,8 +1,5 @@
 // HTML IMPORTER
 
-
-
-
 function HTMLImporter() {}
 
 HTMLImporter.import = function (url) {
@@ -28,17 +25,17 @@ HTMLImporter.import = function (url) {
       for (index1 = old_script.attributes.length - 1; index1 > -1; --index1) {
         attribute = old_script.attributes[index1];
         new_script.setAttribute(attribute.name, attribute.value);
-      }
+      };
 
       old_script.parentNode.replaceChild(new_script, old_script);
-    }
+    };
 
     while (wrapper.firstChild) {
       script.parentNode.insertBefore(
         wrapper.removeChild(wrapper.firstChild),
         script
       );
-    }
+    };
 
     script.parentNode.removeChild(script);
 
@@ -122,13 +119,13 @@ window.addEventListener( "pageshow", function ( event ) {
 
 
 
-
+// Page transitions
 
 function pageTransition(){
 
 
 const tran = document.querySelectorAll('.tran');
-const anchors = document.querySelectorAll('a');
+const anchors = document.querySelectorAll('a:not(.noRe)');
 
   setTimeout(() => {
     tran.forEach(elem =>{
@@ -186,14 +183,12 @@ const anchors = document.querySelectorAll('a');
 
 
 
-
 function navScript() {
 
 // Keeps the nav opened or closed on refresh or new page
-
+  const persHead = document.getElementById('persHead');
   const navOpen = document.getElementById('navOpen');
   const navEl = document.getElementById('navEl');
-  const perHead = document.getElementById('persHead');
   const mainMod = document.querySelector('main');
   const close = 'close';
   const open = 'open';
@@ -204,12 +199,21 @@ function navScript() {
     if (!storedMode) {
         storedMode = DEFAULT_MODE;
         sessionStorage.setItem('navMoving', DEFAULT_MODE);
-    }
-    setNav(storedMode);
+    };
+    
 
 
 function setNav(navMoving = DEFAULT_MODE) {
-  if (navMoving === open) {
+  
+if (persHead == null){
+      
+        // const persHead = document.getElementById('persHead');
+        console.log("error");
+        location.reload();
+      
+    };
+
+    if (navMoving === open) {
     navEl.classList.add('navOpened');
     navOpen.classList.add('navOpenMove');
     mainMod.classList.add('mainSlide');
@@ -220,8 +224,20 @@ function setNav(navMoving = DEFAULT_MODE) {
     navOpen.classList.remove('navOpenMove');
     mainMod.classList.remove('mainSlide');
     persHead.classList.remove('headSlide');
+
   };
 };
+
+// function bugFix(navMoving = DEFAULT_MODE) {
+//   const persHead = document.getElementById('persHead');
+//     if (navMoving === open) {
+//     persHead.classList.add('headSlide');
+
+//   } else if (navMoving === close){
+//     persHead.classList.remove('headSlide');
+//   };
+// };
+
 
 navOpen.addEventListener('click', function () {
     let navMoving = sessionStorage.getItem('navMoving');
@@ -232,7 +248,9 @@ navOpen.addEventListener('click', function () {
     }
 });
 
-
+setNav(storedMode);
+  
+    // bugFix(storedMode);
 
 // page selection button stuff
 
@@ -491,14 +509,14 @@ navOpen.addEventListener('click', function () {
   const musicNav = document.getElementById('musicNav');
   const myMusicNav = document.getElementById('myMusicNav');
   const exampleNav = document.getElementById('exampleNav');
-  const indexNav = document.getElementById('indexNav');
+  const projDirNav = document.getElementById('projDirNav');
   const expediaNav = document.getElementById('expediaNav');
 
   if(document.URL.includes("examplelol")) {
     exampleNav.classList.add('otNavVisible');
   }
-  if(document.body.classList.contains("navIndex")) {
-    indexNav.classList.add('otNavVisible');
+  if(document.body.classList.contains("navProjDir")) {
+    projDirNav.classList.add('otNavVisible');
   };
   if(document.body.classList.contains('navExpedia')) {
     expediaNav.classList.add('otNavVisible');

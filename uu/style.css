@@ -36,6 +36,7 @@ a:hover{
 
 .clickFake:hover{
   cursor: pointer;
+  text-decoration: underline;
 }
 
 .noUnder{
@@ -52,11 +53,11 @@ h1{
 }
 
 h2{
-  font-size: 2rem;
+  font-size: 2.33rem;
   margin: 0;
   font-weight: normal;
   line-height: 1.7rem;
-  letter-spacing: .36rem;
+  letter-spacing: .28rem;
 }
 
 h3{
@@ -75,12 +76,27 @@ h3{
 .center{
   text-align: center!important;
 }
+.overflowShow{
+  overflow: visible!important;
+}
+.quote{
+  
+  margin: 1rem 1.5rem!important;
+/*  font-size: 1.25rem;*/
+  max-width: 87%;
+}
+.quote p{
+  font-size: 1.25rem!important;
+  letter-spacing: .02rem!important;
+}
+
 
 p{
-  letter-spacing: .125rem;
+  letter-spacing: .11rem;
   margin: 0;
-  line-height: 1.25rem;
+  line-height: 1.5rem;
   font-size: 1.12rem;
+  word-spacing: .2rem;
 }
 
 /*SCROLLBARS (UNIVERSAL)*/
@@ -130,8 +146,21 @@ main div{
   display: inline-block;
   text-align: center;
   margin: 2rem 0;
-  max-width: 50%;
+  max-width: 56%;
 /*  background-color: #EEE;*/
+}
+
+main div h1{
+  margin-bottom: 3rem;
+}
+
+main div h2, main div p, main div img{
+  margin-bottom: 1.66rem;
+  text-align: left;
+}
+
+main div p{
+  margin-left: .75rem;
 }
 
 main ul{
@@ -233,7 +262,7 @@ section.ver{
 
 .hor .divL{
   grid-column-start: 1;
-  padding: .75rem 0;
+  padding: 1.5rem 0;
 }
 .hor .divR{
   grid-column-start: 2;
@@ -274,11 +303,14 @@ section.ver{
   min-width: ;
 }
 
-
-
 .divHome p{
   width: 98%;
   margin: .5rem auto;
+}
+
+.linkList h1{
+  margin-bottom: 2rem;
+  font-size: 3.5rem;
 }
 
 
@@ -340,7 +372,7 @@ section.ver{
 }
 
 .directory a:hover .directoryText{
-  font-size: 2rem;
+  font-size: 2.25rem;
   filter: invert(100%);
 }
 
@@ -356,7 +388,7 @@ section.ver{
   text-shadow: 0px 0px 4px white, 0px 0px 3px white, 0px 0px 3px white, 0px 0px 2px white;
   font-weight: normal;
   letter-spacing: 2px;
-  font-size: 1.75rem;
+  font-size: 2rem;
 }
 
 
@@ -389,8 +421,8 @@ section.ver{
 }
 
 .showcase img:hover {
-  filter: blur(1.25px) grayscale(25%);
-  transform: scale(1.01);
+  filter: blur(1px) grayscale(75%);
+  transform: scale(1.015);
   transform-origin: center center;
 }
 
@@ -416,17 +448,19 @@ section.ver{
   margin: 1.75rem 1rem;
   max-width: 100%;
   z-index: 4;
-  text-align: center;
+/*  text-align: center;*/
 }
 
 .header h1{
 /*  transform: scaleY(1.25);*/
   font-size: 4rem;
+  text-align: center;
 }
 
 .header h2{
   opacity: .66;
   margin: 1rem 0;
+  text-align: center;
 }
 
 .header img{
@@ -469,6 +503,12 @@ section.ver{
   margin: 0;
 }
 
+.padding3{
+  width: auto;
+  min-height: 2.75rem;
+  margin: 0;
+}
+
 .pagePadding{
   width: auto;
   min-height: 14rem;
@@ -479,9 +519,15 @@ section.ver{
   
 }*/
 
-.secTitle h1{
+.secTitle{
   font-size: 3.5rem;
   letter-spacing: .33rem;
+  padding:1rem 0rem;
+}
+
+#selectedWorks{
+  margin-bottom: 0;
+  padding-bottom: 0;
 }
 
 .footer{
@@ -491,13 +537,18 @@ section.ver{
 /*  bottom: 0;*/
 }
 
+.footer p{
+  text-align: center;
+  margin-bottom: 0;
+}
+
 .footer .padding2{
   display: block;
 }
 
 .footer ul > *{
   padding: 0rem;
-  font-size: .88rem;
+  font-size: 1.1rem;
 }
 
 .footerContact{
@@ -568,6 +619,7 @@ nav{
   padding: 0;
   overflow-y: hidden;
   transform: translateX(100%);
+  z-index: 10;
 }
 
 #navOpen{
@@ -582,7 +634,7 @@ nav{
 }
 
 #navOpen.navOpenMove{
-  right: 15vw!important; margin-right: .5rem!important;
+  right: 15vw!important; margin-right: .12rem!important;
 /*  margin-top: .35rem;*/
 }
 
@@ -640,6 +692,7 @@ nav.navOpened{
   word-break: break-all;
   word-break: break-word;
   hyphens: auto;
+  letter-spacing: .25rem;
 /*  max-width: calc(100% - .125rem);*/
 /*  font-weight: bold;*/
 }
@@ -657,7 +710,7 @@ height: 0;
   font-size: 1.25rem;
   letter-spacing: 3px;
   padding-right: .75rem;
-  margin: 1.5rem 0;
+  margin: 2rem 0;
 }
 
 .navOptions{
