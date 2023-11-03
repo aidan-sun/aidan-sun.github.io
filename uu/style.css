@@ -3,14 +3,40 @@ html{
   font-family: Georgia, serif;
   scroll-behavior: smooth;
   background-color: white;
+  letter-spacing: .5rem;
 }
+@media (min-resolution: 1.25dppx){
+  html{
+    transform: scale(.8) translateX(-0.8);
+    font-size: calc(16px * 0.8);
+  }
+}
+@media (min-resolution: 1.5dppx){
+  html{
+    transform: scale(.6666) translateX(-0.6666);
+    font-size: calc(16px * 0.6666);
+  }
+}
+@media (min-resolution: 1.75dppx){
+  html{
+    transform: scale(.5714) translateX(-0.5714);
+/*    font-size: calc(16px * 0.5714);*/
+  }
+}
+@media (min-resolution: 2dppx){
+  html{
+    transform: scale(.5) translateX(-0.5);
+    font-size: calc(16px * 0.5714);
+  }
+}
+
 
 body{
   color: black; 
   margin: 0px;
   padding: 0px;
   background-color: white;
-  letter-spacing: .5rem;
+  
 }
 
 /*LINKS*/
@@ -80,8 +106,9 @@ h3{
   overflow: visible!important;
 }
 .quote{
-  
+  display: block;
   margin: 1rem 1.5rem!important;
+  margin-bottom: 2rem!important;
 /*  font-size: 1.25rem;*/
   max-width: 87%;
 }
@@ -155,7 +182,7 @@ main div h1{
 }
 
 main div h2, main div p, main div img{
-  margin-bottom: 1.66rem;
+  margin-bottom: 2rem;
   text-align: left;
 }
 
@@ -329,8 +356,8 @@ section.ver{
   display: flex;
   flex-direction: column;
 /*  box-shadow: 0px 3px 17px rgba(0, 0, 0, .25);*/
-  max-width: 425px;
-  max-height: 425px;
+  max-width: 26.6rem;
+  max-height: 26.6rem;
 /*  width: auto;
   height: auto;*/
   justify-content: center;
@@ -387,7 +414,7 @@ section.ver{
   transform: translateY(-50%);
   text-shadow: 0px 0px 4px white, 0px 0px 3px white, 0px 0px 3px white, 0px 0px 2px white;
   font-weight: normal;
-  letter-spacing: 2px;
+  letter-spacing: .125rem;
   font-size: 2rem;
 }
 
@@ -523,6 +550,7 @@ section.ver{
   font-size: 3.5rem;
   letter-spacing: .33rem;
   padding:1rem 0rem;
+  margin-bottom: 4rem;
 }
 
 #selectedWorks{
@@ -587,7 +615,7 @@ section.ver{
 }*/
 
 .reveal{
-  transform: translateY(25px);
+  transform: translateY(1.563rem);
   opacity: 0;
   transition: all .7s cubic-bezier(0.22, 1, 0.36, 1);
 }
@@ -708,7 +736,7 @@ height: 0;
 
 .navContent h3{
   font-size: 1.25rem;
-  letter-spacing: 3px;
+  letter-spacing: .188rem;
   padding-right: .75rem;
   margin: 2rem 0;
 }
