@@ -248,7 +248,21 @@ navOpen.addEventListener('click', function () {
     }
 });
 
-setNav(storedMode);
+
+
+  // const navOpener = document.getElementById('navOpener');
+
+  // window.onscroll = function(){
+  //   if(navOpener.getBoundingClientRect().bottom <= 0){
+    
+  //   }
+  // };
+
+
+//do this later ^^
+
+setNav(storedMode);  
+
   
     // bugFix(storedMode);
 
