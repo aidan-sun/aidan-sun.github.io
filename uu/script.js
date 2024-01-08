@@ -131,7 +131,7 @@ const anchors = document.querySelectorAll('a:not(.noRe)');
     tran.forEach(elem =>{
       elem.classList.remove('pageTran');
     });
-  }, 250);
+  }, 330);
 
   
 
