@@ -235,7 +235,7 @@ main div h4{
 }
 
 .imgProj{
-  max-width: 88%;
+  max-width: 95%;
   text-align: center;
   display: block;
   margin: 3rem auto 1rem auto;
@@ -245,6 +245,10 @@ main div h4{
 .imgProjNoMarg{
   margin-bottom: 0;
   padding-bottom: 0;
+}
+
+.imgProjNoS{
+  box-shadow: none;
 }
 
 .smallerImg{
@@ -281,6 +285,7 @@ ul p{
   transform: translateY(-2rem);
   flex-direction: row;
   opacity: .66;
+  max-width: 500%;
 
 }
 
