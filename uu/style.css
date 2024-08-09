@@ -60,6 +60,17 @@ a:hover{
   text-shadow: 0px 0px 5px white, 0px 0px 5px white, 0px 0px 5px white, 0px 0px 4px white, 0px 0px 4px white;
 }
 
+.imgLinkHover{
+  transition: .2s;
+  user-select: none;
+}
+
+.imgLinkHover:hover{
+/*  -webkit-filter: drop-shadow(0px 0px 5px white, 0px 0px 5px white, 0px 0px 5px white, 0px 0px 4px white, 0px 0px 4px white) invert(100%);*/
+/*  filter: drop-shadow(0px 0px 5px white, 0px 0px 5px white, 0px 0px 5px white, 0px 0px 4px white, 0px 0px 4px white) invert(100%);*/
+filter: invert(100%) drop-shadow(0px 0px 2px black) drop-shadow(0px 0px 1px black) drop-shadow(0px 0px 1px black) drop-shadow(0px 0px 1px black);
+}
+
 .clickFake:hover{
   cursor: pointer;
   text-decoration: underline;
@@ -107,14 +118,17 @@ h3{
 }
 .quote{
   display: block;
-  margin: 1rem 1.5rem!important;
-  margin-bottom: 2rem!important;
+  margin: 1.5rem 1.5rem!important;
+/*  margin-bottom: 0rem!important;*/
 /*  font-size: 1.25rem;*/
   max-width: 87%;
+
 }
 .quote p{
   font-size: 1.25rem!important;
   letter-spacing: .02rem!important;
+  line-height: 2.25rem;
+  text-align: center;
 }
 
 
@@ -178,6 +192,10 @@ main div{
 /*  background-color: #EEE;*/
 }
 
+.smallDivBody{
+  max-width: 46%;
+}
+
 main div h1{
   margin-bottom: 3rem;
 }
@@ -235,7 +253,7 @@ main div h4{
 }
 
 .imgProj{
-  max-width: 95%;
+  max-width: 82%;
   text-align: center;
   display: block;
   margin: 3rem auto 1rem auto;
@@ -331,6 +349,11 @@ section.ver{
   width: 33%;
 }
 
+section.nestedDivi{
+  width: 100%!important;
+  margin: .5rem;
+}
+
 .divided{
   display: grid;
 /*  grid-template-rows: 1 1;*/
@@ -365,7 +388,7 @@ section.ver{
 
 .hor .divL{
   grid-column-start: 1;
-  padding: 1.5rem 0;
+  padding: 1.5rem 1.25rem;
 }
 .hor .divR{
   grid-column-start: 2;
@@ -422,6 +445,11 @@ section.ver{
 
 #phones{
   margin-top: -4rem;
+}
+
+#nda{
+  font-size: .82rem;
+  color: #777;
 }
 
 
@@ -601,10 +629,11 @@ display: block;
   padding: 0 1rem;
   font-size: 1.5rem;
   opacity: .66;
+  transition: .22s;
 }
 
 #persHead h1, #persHead h2{
-  transition: .33s cubic-bezier(0.22, 1, 0.36, 1);
+/*  transition: .33s cubic-bezier(0.22, 1, 0.36, 1);*/
 }
 
 .headSlide{
@@ -676,6 +705,8 @@ display: block;
   letter-spacing: .33rem;
   padding:1rem 0rem;
   margin-bottom: 4rem;
+  line-height: 4rem
+/*  font-weight: bold;*/
 }
 
 #selectedWorks{
@@ -773,6 +804,11 @@ nav{
   overflow-y: hidden;
   transform: translateX(100%);
   z-index: 10;
+
+  border-width: 1px;
+  border-style: solid;
+  border-image: linear-gradient(to bottom, white, white, #DDD, #DDD, #DDD, #DDD, #DDD, white, white, white, white, white, white) 1;
+
 }
 
 #navOpen{
@@ -780,9 +816,10 @@ nav{
   writing-mode: vertical-lr;
   text-orientation: upright;
   right: 0;
-  transform: translateX(-50%);
+  transform: translate(-50%, -.25rem);
   margin: 0.1rem -.1rem;
   z-index: 9;
+  opacity: 66%;
 /*  width: 4rem;*/
 }
 
@@ -811,7 +848,7 @@ nav.navOpened{
   grid-template-columns: 1fr 1fr;
   gap: .75rem;*/
 /*  top: 50vh; transform: translateY(-50%);*/
-  margin: 1.5rem .5rem;
+  margin: 1.5rem 1rem;
 /* 1.12rem */
   z-index: 10;
   transition: .5s cubic-bezier(0.22, 1, 0.36, 1);
@@ -822,6 +859,14 @@ nav.navOpened{
   margin: 0;
   line-height: 1rem;
   padding-bottom: 1rem;
+}
+
+#pageSelect img{
+  max-height: 1.5rem;
+  max-width: auto;
+  margin: 0;
+  padding-bottom: .75rem;
+  transform: translateX(-.125rem);
 }
 
 .navContent{
@@ -845,7 +890,7 @@ nav.navOpened{
   word-break: break-all;
   word-break: break-word;
   hyphens: auto;
-  letter-spacing: .25rem;
+  letter-spacing: 0.03rem;
 /*  max-width: calc(100% - .125rem);*/
 /*  font-weight: bold;*/
 }
@@ -936,6 +981,10 @@ height: 0;
   color: #CCCCCC;
 }
 
+img.pageSelectButton{
+  opacity: 36%;
+}
+
 .pageSelectButton:hover{
   color: black;
   opacity: 36%;
@@ -944,6 +993,10 @@ height: 0;
 .pageSelectButton.pageButAct{
 /*  opacity: 100%;*/
     color: black;
+}
+
+img.pageSelectButton.pageButAct{
+  opacity: 100%;
 }
 
 .pageSelectButton.pageButAct:hover{

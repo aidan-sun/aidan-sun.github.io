@@ -192,7 +192,7 @@ function navScript() {
   const mainMod = document.querySelector('main');
   const close = 'close';
   const open = 'open';
-  const DEFAULT_MODE = close;
+  const DEFAULT_MODE = open;
 
 
     let storedMode = sessionStorage.getItem('navMoving');
@@ -526,6 +526,7 @@ setNav(storedMode);
   const projDirNav = document.getElementById('projDirNav');
   const expediaNav = document.getElementById('expediaNav');
   const uegroupNav = document.getElementById('uegroupNav');
+  const microsoftNav = document.getElementById('microsoftNav');
 
   if(document.URL.includes("examplelol")) {
     exampleNav.classList.add('otNavVisible');
@@ -538,6 +539,9 @@ setNav(storedMode);
   };
   if(document.body.classList.contains('navUegroup')) {
     uegroupNav.classList.add('otNavVisible');
+  };
+  if(document.body.classList.contains('navMicrosoft')) {
+    microsoftNav.classList.add('otNavVisible');
   };
 
 };
