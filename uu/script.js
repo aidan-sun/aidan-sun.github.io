@@ -527,6 +527,7 @@ setNav(storedMode);
   const expediaNav = document.getElementById('expediaNav');
   const uegroupNav = document.getElementById('uegroupNav');
   const microsoftNav = document.getElementById('microsoftNav');
+  const yunexNav = document.getElementById('yunexNav');
 
   if(document.URL.includes("examplelol")) {
     exampleNav.classList.add('otNavVisible');
@@ -542,6 +543,9 @@ setNav(storedMode);
   };
   if(document.body.classList.contains('navMicrosoft')) {
     microsoftNav.classList.add('otNavVisible');
+  };
+  if(document.body.classList.contains('navYunex')) {
+    yunexNav.classList.add('otNavVisible');
   };
 
 };
